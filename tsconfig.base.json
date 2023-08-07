@@ -14,7 +14,12 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@org/ui/components/*": ["libs/ui/components/*"],
+      "@org/ui/icons/*": ["libs/ui/icons/*"],
+      "@org/ui/styles": ["libs/ui/styles/index.ts"],
+      "@org/ui/utils": ["libs/ui/utils/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }
