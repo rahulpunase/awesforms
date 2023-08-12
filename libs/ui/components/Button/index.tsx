@@ -70,7 +70,7 @@ const renderChildren = (
   return <Text color="_inherit">{label}</Text>;
 };
 
-const DefaultButton = styled(
+const Button = styled(
   ({
     icon,
     label,
@@ -157,4 +157,4 @@ const DefaultButton = styled(
     `}
 `;
 
-export default DefaultButton;
+export default Button;

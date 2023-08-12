@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ReactNode } from 'react';
 import { styled } from 'styled-components';
 import * as Popover from '@radix-ui/react-popover';
 import Button from '../Button';
@@ -7,10 +7,12 @@ import View from '../Layout/View';
 import StyledView from '../Layout/StyledView';
 import Size from '../Layout/Size';
 import Space from '../Layout/Space';
-import Text from '../Text';
+import Position from '../Layout/Position';
 
 type PopoverProps = {
-  name?: string;
+  trigger: ReactNode;
+  onOpenChange?: () => void;
+  content: ReactNode;
 };
 
 const CustomCloseButton = styled(Button)`
@@ -31,40 +33,37 @@ const CustomArrow = styled(Popover.Arrow)`
   top: 1px;
 `;
 
-const Item = styled(View)``;
-
-export default function CustomPopover() {
-  const [isOpened, setIsOpened] = useState(false);
+export default function CustomPopover({
+  trigger,
+  onOpenChange,
+  content,
+}: PopoverProps) {
   return (
-    <Popover.Root onOpenChange={() => setIsOpened(!isOpened)}>
-      <CustomTrigger>
-        <Button
-          icon={isOpened ? 'fa fa-check' : 'fa fa-bars'}
-          shape="circle"
-          variant="filled"
-        />
-      </CustomTrigger>
+    <Popover.Root onOpenChange={onOpenChange}>
+      <CustomTrigger>{trigger}</CustomTrigger>
       <Popover.Portal>
         <Popover.Content className="PopoverContent" sideOffset={5}>
           <CustomArrow />
           <Flex flexDirection="column">
             <Size width="300px" height="auto">
-              <Space padding={8}>
+              <Space padding={[8, 12, 12]}>
                 <StyledView
                   borderRadius={4}
                   background="backgroundCard"
                   boxShadow="elvt4"
                 >
                   <Popover.Close asChild>
-                    <CustomCloseButton
-                      icon="fa fa-times"
-                      shape="circle"
-                      variant="text"
-                    />
+                    <Position position="absolute" top="4px" right="6px">
+                      <CustomCloseButton
+                        icon="fa fa-times"
+                        shape="circle"
+                        variant="text"
+                      />
+                    </Position>
                   </Popover.Close>
-                  <Item>
-                    <Text>Item one</Text>
-                  </Item>
+                  <Space padding={[12, 0, 0, 0]}>
+                    <View>{content}</View>
+                  </Space>
                 </StyledView>
               </Space>
             </Size>

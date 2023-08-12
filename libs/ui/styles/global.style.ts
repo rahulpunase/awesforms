@@ -1,6 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
 import { defaultColors, darkThemeColors } from '../variables';
-// import Raleway from '../assets/fonts/Raleway-VariableFont_wght.ttf';
+// import '@radix-ui/themes/styles.css';
 
 const Raleway = '';
 
@@ -37,10 +37,11 @@ const GlobalStyle = createGlobalStyle`
       #__next {
         height: 100%;
       }
+      background-color: var(--background-body);
     }
 
     html {
-      font-size: 16px;
+      font-size: 10px;
     }
     
     @font-face {

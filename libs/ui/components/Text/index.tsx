@@ -1,10 +1,10 @@
 import React, { ReactNode } from 'react';
-import { EColors, TFontSize, TFontWeights } from '../../variables';
+import { EColors, EFontSize, TFontWeights } from '../../variables';
 import { styled } from 'styled-components';
 
 interface IText {
   children: ReactNode;
-  fontSize?: TFontSize;
+  fontSize?: keyof typeof EFontSize;
   fontWeight?: TFontWeights;
   component?: string;
   fontFamily?: string;
@@ -27,7 +27,7 @@ const Text = styled(
     fontFamily ? fontFamily : theme.fontFamilies.main};
   font-weight: ${({ theme, fontWeight = 'normal' }) =>
     theme.fontWeights[fontWeight]};
-  color: ${({ theme, color = 'text' }) => theme.getColor(color)};
+  color: ${({ theme, color = 'textMain' }) => theme.getColor(color)};
   transition: ${({ theme }) => theme.transitions.all};
 `;
 

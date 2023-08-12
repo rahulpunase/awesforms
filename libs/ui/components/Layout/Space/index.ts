@@ -9,13 +9,15 @@ type ISpace = {
   children: ReactNode;
 };
 
+type FinalSpaceProps = ISpace & React.HTMLAttributes<HTMLDivElement>;
+
 const Space = styled(
   ({
     padding,
     margin,
     children,
     ...props
-  }: ISpace): DetailedReactHTMLElement<any, any> => {
+  }: FinalSpaceProps): DetailedReactHTMLElement<any, any> => {
     validateSingleChild(children, 'Space');
     return React.cloneElement(
       children as DetailedReactHTMLElement<any, any>,

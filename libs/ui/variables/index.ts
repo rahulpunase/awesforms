@@ -11,6 +11,7 @@ const SECONDARY = '#6c757d';
 const DarkBG = '#2e3641';
 
 const generateDesiredShades = (color: string) => ({
+  BACKGROUND: ShadeGenerator.hue(color).shade('10').hex(),
   LIGHTEST: ShadeGenerator.hue(color).shade('20').hex(),
   LIGHT: ShadeGenerator.hue(color).shade('70').hex(),
   MAIN: color,
@@ -37,6 +38,7 @@ export const defaultColors: Record<string, Record<string, string>> = {
   },
 
   primary: {
+    shadeBackground: Green.BACKGROUND,
     shade1: Green.LIGHTEST,
     shade2: Green.LIGHT,
     main: Green.MAIN,
@@ -67,9 +69,10 @@ export const defaultColors: Record<string, Record<string, string>> = {
   },
 
   background: {
-    body: Grey.LIGHT,
+    body: Green.BACKGROUND,
     card: WHITE,
     dark: Green.DARKER,
+    secondary: Grey.MAIN,
   },
 
   text: {
@@ -171,7 +174,8 @@ export enum EColors {
 
   backgroundCard = 'var(--background-card)',
   backgroundBody = 'var(--background-body)',
-  backgroundLight = 'var(--background-light)',
+  backgroundDark = 'var(--background-dark)',
+  backgroundSecondary = 'var(--background-secondary)',
 
   disabled = 'var(--grey-main)',
   white = 'var(--default-white)',
@@ -180,14 +184,12 @@ export enum EColors {
   _blank = '',
 }
 
-export type TFontSize = 'small' | 'normal' | 'large' | 'xl' | 'xxl';
-
 export enum EFontSize {
-  small = '0.8rem',
-  normal = '1rem',
-  large = '1.2rem',
-  xl = '1.4rem',
-  xxl = '1.6rem',
+  small = '1rem',
+  normal = '1.4rem',
+  large = '1.8rem',
+  xl = '2rem',
+  xxl = '2.4rem',
 }
 
 export type TFontWeights = 'normal' | 'bold' | 'bolder' | 'extreme';
